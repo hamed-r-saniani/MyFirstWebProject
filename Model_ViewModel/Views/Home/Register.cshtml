@@ -1,0 +1,106 @@
+﻿
+@model Register
+
+@{
+    ViewData["Title"] = "اطلاعات کاربر";
+}
+
+<link rel="icon" type="image/png" href="/images/icons/resulticon.ico" />
+
+
+<div class="card text-right" style="direction:rtl;margin:30px auto;">
+    <div class="card-header">
+        نمایش اطلاعات
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                @if (ViewBag.Image != null)
+                {
+                    <img src="@ViewBag.Image" height="150" class="img-thumbnail" />
+                }
+                else
+                {
+                    <img src="~/images/NoImage.jpg" height="150" class="img-thumbnail" />
+                }
+
+            </div>
+            <div class="col-lg-9 col-md-6">
+                <p><span class="text-primary">نام :</span> <span> @Model.Name </span></p>
+                <p><span class="text-primary">نام خانوادگی :</span> <span> @Model.Family </span></p>
+                <p><span class="text-primary">سن :</span> <span> @Model.Age </span></p>
+                <p><span class="text-primary">نام کاربری :</span> <span> @Model.UserName </span></p>
+                <p style="direction:ltr;"> <span style="direction:ltr;"> @Model.Password </span> <span class="text-primary">: پسوورد</span></p>
+                <p><span class="text-primary"> ایمیل :</span> <span> @Model.Email </span></p>
+                <p><span class="text-primary">آدرس وبسایت :</span> <span> @Model.Website </span></p>
+                <p>
+                    <span class="text-primary"> سطح تحصیلات :</span>
+                    @if (Model.Degree == 1)
+                    {
+                        <span> دیپلم </span>
+
+                    }
+
+                    else if (Model.Degree == 2)
+                    {
+                        <span> فوق دیپلم </span>
+
+                    }
+
+                    else if (Model.Degree == 3)
+                    {
+                        <span> لیسانس </span>
+
+                    }
+
+                    else if (Model.Degree == 4)
+                    {
+                        <span> فوق لیسانس </span>
+
+                    }
+
+                    else
+                    {
+                        <span>دکترا</span>
+
+                    }
+
+
+                </p>
+                <p>
+                    <span class="text-primary"> جنسیت :</span>
+                    @if (Model.Gender == 0)
+                    {
+                        <span>مرد</span>
+
+                    }
+
+                    else
+                    {
+                        <spa>زن</spa>
+
+                    }
+                </p>
+                <p>
+                    <span class="text-primary">معرفی مختصر :</span> <span> @Model.Description </span>
+                </p>
+                <p>
+                    <span class="text-primary">با قوانین سایت موافقید ؟</span>
+                    @if (Model.IAccept == true)
+                    {
+
+                        <span>بله</span>
+                    }
+
+                    else
+                    {
+                        <span>خیر</span>
+
+                    }
+                </p>
+                <a href="/Sample/Index" class="btn btn-primary float-left">بازگشت به خانه</a>
+            </div>
+        </div>
+    </div>
+</div>
+

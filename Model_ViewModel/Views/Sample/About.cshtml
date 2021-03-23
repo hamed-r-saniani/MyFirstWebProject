@@ -1,0 +1,131 @@
+﻿
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="/images/icons/faviconabout.ico" />
+
+    <title>درباره ما</title>
+    <!--
+    Magazee Template
+    http://www.templatemo.com/tm-514-magazee
+    -->
+    <!-- load CSS -->
+
+
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">    <!-- Google web font "Open Sans" -->
+    <link href="~/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />                                       <!-- https://getbootstrap.com/ -->
+    <link rel="stylesheet" href="/css/templatemo-style.css">                                     <!-- Templatemo style -->
+
+    <script>
+        var renderPage = true;
+
+        if (navigator.userAgent.indexOf('MSIE') !== -1
+            || navigator.appVersion.indexOf('Trident/') > 0) {
+            /* Microsoft Internet Explorer detected in. */
+            alert("Please view this in a modern browser such as Chrome or Microsoft Edge.");
+            renderPage = false;
+        }
+    </script>
+
+</head>
+
+<body>
+    <!-- Loader -->
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>
+
+    <div class="container">
+
+        <!-- 1st section -->
+        <section class="row tm-section">
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 p-0">
+                <div class="tm-flex-center p-5 tm-bg-color-primary tm-section-min-h">
+                    <h1 class="tm-text-color-white tm-site-name">@ViewBag.Title1</h1>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <div class="tm-flex-center p-5" style="direction:rtl;text-align:right;">
+                    <q class="tm-quote tm-text-color-gray">@ViewBag.Desc1</q>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2nd section -->
+        <section class="row tm-section tm-col-md-reverse">
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <div class="tm-flex-center p-5">
+                    <div class="tm-md-flex-center" style="direction:rtl;text-align:right;">
+                        
+                        <p class="mb-4">@ViewBag.Desc2</p>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 p-0">
+                <div class="tm-flex-center p-5 tm-bg-color-primary">
+                    <div class="tm-max-w-400 tm-flex-center tm-flex-col">
+                        <img src="/images/Avatar.png" alt="Image" class="rounded-circle mb-4" style="width:160px;height:160px;">
+                        <p class="tm-text-color-white small tm-font-thin mb-0" style="font-size:xx-large;font-weight:bold;">@ViewBag.Title2</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3rd Section -->
+        <section class="row tm-section tm-mb-30">
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 p-0 text-center">
+                <img src="/images/ForAbility.jpg" alt="Image" class="img-fluid" style="width:600px;height:400px;">
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <div class="tm-flex-center p-5">
+                    <div class="tm-flex-center tm-flex-col" style="direction:rtl;text-align:right;">
+                       
+                        <p>@ViewBag.Desc3</p>
+                       
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Footer -->
+        <footer>
+            <p class="tm-text-white tm-footer-text" style="direction:rtl;text-align:center;">
+                کپی رایت &copy; 2020 حامد
+                . طراحی:
+                <a href="mailto:hamed.r.saniani@outlook.com" class="tm-footer-link" style="text-decoration:none;">حامد رضایی سانیانی</a>
+            </p>
+        </footer>
+    </div>
+    <!-- load JS -->
+    <script src="/js/jquery-3.2.1.slim.min.js"></script>         <!-- https://jquery.com/ -->
+    <script>
+
+  /* DOM is ready
+  ------------------------------------------------*/
+  $(function(){
+
+    if(renderPage) {
+      $('body').addClass('loaded');
+    }
+
+    $('.tm-current-year').text(new Date().getFullYear());  // Update year in copyright
+  });
+
+    </script>
+
+</body>
+</html>

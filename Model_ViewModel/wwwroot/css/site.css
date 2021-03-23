@@ -1,0 +1,69 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+
+@font-face {
+    font-family: "yekan";
+    src: url(/fonts/Yekan.eot);
+    src: url(/fonts/Yekan.eot?#iefix) format("embedded-opentype"), url(/fonts/Yekan.woff) format("woff"), url(/fonts/Yekan.ttf) format("truetype"), url(/fonts/Yekan.svg#BYekan) format("svg");
+    font-weight: normal;
+    font-style: normal
+}
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    direction: rtl !important;
+    padding-top: 0;
+    background-color: #fceef5 !important;
+    font-family:yekan !important;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.mr-auto, .mx-auto{
+    margin-left:auto !important;
+    margin-right:0;
+}
+
+.container{
+    margin-top:40px !important;
+}
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+.list-group {
+    padding-right: 0px !important;
+    text-align:right !important;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+
+
+#Search {
+    width: 70% !important;
+    display: inline-block !important;
+}
+

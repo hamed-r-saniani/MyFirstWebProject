@@ -1,0 +1,211 @@
+﻿@model SampleIndexViewModel
+
+
+@{
+    Layout = null;
+}
+
+@addTagHelper *,Model_ViewModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href="/images/icons/faviconhome.ico" />
+    <title>فروشگاه من</title>
+
+    <link href="~/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/css/footer.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">فروشگاه من</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Sample/Index">خانه <span class="sr-only">(صفحه اصلی)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Sample/About">درباره ما</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/Sample/Contact">تماس با ما</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Home/Index">ثبت نام در سایت</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" id="Search" type="search" placeholder="جستجو" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">جستجو</button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="card text-right">
+                    <div class="card-header">
+                        دسته بندی محصولات
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><a href="/Sample/Index" style="text-decoration:none;">همه</a></li>
+                        @{
+
+                            foreach (var item in Model.Categories)
+                            {
+                                <li class="list-group-item"><a href="/Sample/Index/@item.CategoryID" style="text-decoration:none;">@item.CategoryName</a></li>
+                            }
+                        }
+
+                    </ul>
+                </div>
+                <div style="margin-top:20px;">
+                    <img src="~/images/tabligh1.gif" alt="Alternate Text" />
+                </div>
+                <div style="margin-top:10px;">
+                    <img src="~/images/tabligh2.gif" alt="Alternate Text" />
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
+                        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
+                        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="~/images/slide1.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/images/slide2.png" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/images/slide3.jpg" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </a>
+                </div>
+                <div class="row" style="margin-top:30px;">
+                    @{
+                        foreach (var item in Model.Products)
+                        {
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card text-right">
+                                    <img src="~/images/@item.ProductImage" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@item.ProductName</h5>
+                                        <p class="card-text" style="text-align:left;color:green;direction:ltr;">@item.ProductPrice IRR</p>
+                                        <p class="card-text">@item.ProductShortDesc</p>
+                                        <a href="/Sample/Details/@item.ProductID" class="btn btn-primary btn-block">اطلاعات بیشتر ...</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <section class="container-fluid sec-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="card desc-box">
+                        <div class="card-body">
+                            <div class="card-title">درباره ما</div>
+                            <div class="card-text">
+                                ما یک فروشگاه بزرگ هستیم با اجناس اصل و قیمتی رقابتی با سایر فروشگاه ها. تیم ما در حال حاضر 10 نفر هست که روز به روز در حال رشد و بزرگتر شدن هستیم.
+                            </div>
+                        </div>
+                    </div><!--.card-->
+                </div><!--.col-->
+                <div class="col">
+                    <div class="card desc-box">
+                        <div class="card-body">
+                            <div class="card-title">ارتباط با ما</div>
+                            <div class="card-text">
+                                <div class="row">
+                                    <div class="col">
+                                        <i class="fas fa-phone ml-3"></i>
+                                        <span>1-810-627-2233</span>
+                                    </div><!--.col-->
+                                </div><!--.row-->
+                                <div class="row">
+                                    <div class="col">
+                                        <i class="fas fa-map-marker ml-3"></i>
+                                        <span>ایران - تهران</span>
+                                    </div><!--.col-->
+                                </div><!--.row-->
+                                <div class="row">
+                                    <div class="col">
+                                        <i class="fas fa-envelope-open ml-3"></i>
+                                        <email>Hamed.r.Saniani</email>
+                                    </div><!--.col-->
+                                </div><!--.row-->
+                            </div><!--.card-text-->
+                        </div>
+                    </div><!--.card-->
+                </div><!--.col-->
+                <div class="col text-center">
+                    <img src="/images/mylogorm.png" alt="لوگو" class="mb-3" style="width:200px;height:200px;">
+                    <br class="clearfix">
+                    <a href="#" class="snip1472"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="snip1472"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="snip1472"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="#" class="snip1472"><i class="fab fa-google-plus-g"></i></a>
+                </div><!--.col-->
+            </div><!--.row-->
+        </div>
+    </section>
+    <section class="container-fluid sec-sub-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <span>تمامی حقوق سایت متعلق به حامد رضایی سانیانی میباشد.</span>
+                </div><!--.col-->
+                <div class="col text-left" style="text-align:left;">
+                    <a href="mailto:hamed.r.saniani@outlook.com" class="f-light text-dark">طراحی و توسعه:</a>
+                    <a href="mailto:hamed.r.saniani@outlook.com" class="f-light text-dark">حامد رضایی سانیانی</a>
+                </div><!--.col-->
+            </div><!--.row-->
+        </div>
+    </section>
+
+
+
+
+
+
+    <script src="~/node_modules/jquery/dist/jquery.js"></script>
+    <script src="~/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
+</body>
+</html>
