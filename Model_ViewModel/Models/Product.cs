@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Model_ViewModel.Models
 {
@@ -13,7 +11,8 @@ namespace Model_ViewModel.Models
         public string ProductDesc { get; set; }
         public string ProductImage { get; set; }
         public string ProductShortDesc { get; set; }
-        public  int ProductCategoryID { get; set; }
+        public int ProductCategoryID { get; set; }
+        public Guid PersonGuid { get; set; }
 
         public List<Product> GetProduct()
         {

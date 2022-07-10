@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Model_ViewModel.CustomAttributes;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Model_ViewModel.Models
 {
-    public class Register
+    public class Person
     {
+        public Guid Guid { get; set; }
+
+
         [Display(Name = "نام")]
         [Required(ErrorMessage = "وارد نمودن {0} الزامی است.")]
         [StringLength(50, MinimumLength = 3, ErrorMessage = "تعداد کاراکترهای {0} باید بین 3 و 50 کاراکتر باشد")]

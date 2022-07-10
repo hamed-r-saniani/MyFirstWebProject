@@ -21,7 +21,7 @@ namespace Model_ViewModel.Controllers
             return View();
         }
 
-        public IActionResult Register(Register model)
+        public IActionResult Register(Person model)
         {
             if (ModelState.IsValid)
             {
