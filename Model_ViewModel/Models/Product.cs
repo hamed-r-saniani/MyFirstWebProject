@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Model_ViewModel.Models
 {
     public class Product
     {
+        [Key]
+        public Guid Guid { get; set; }
         public int ProductID { get; set; }
         public string ProductName { get; set; }
         public long ProductPrice { get; set; }
@@ -12,7 +15,11 @@ namespace Model_ViewModel.Models
         public string ProductImage { get; set; }
         public string ProductShortDesc { get; set; }
         public int ProductCategoryID { get; set; }
-        public Guid PersonGuid { get; set; }
+        public DateTime CreateDate { get; set; }
+        public DateTime? DeletedDate { get; set; }
+        public int Deleted { get; set; }
+        public Category Category { get; set; }
+        public Person Person { get; set; }
 
         public List<Product> GetProduct()
         {

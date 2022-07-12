@@ -1,9 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Model_ViewModel.Models
 {
     public class Degree
     {
+        [Key]
+        public Guid Guid { get; set; }
         public int DegreeID { get; set; }
         public string DegreeName { get; set; }
         public List<Degree> GetDegrees()

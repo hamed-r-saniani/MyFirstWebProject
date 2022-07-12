@@ -12,11 +12,19 @@ namespace Model_ViewModel.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IDatabaseContext _context;
+
+        public HomeController(IDatabaseContext context)
+        {
+            _context = context;
+        }
+        
+
         Degree degree = new Degree();
         public IActionResult Index()
         {
 
-            ViewBag.Degrees = new SelectList(degree.GetDegrees(), "DegreeID", "DegreeName");
+            ViewBag.Degrees = new SelectList(_context.Degree.ToList(), "DegreeID", "DegreeName");
 
             return View();
         }
@@ -36,6 +44,21 @@ namespace Model_ViewModel.Controllers
                     }
                     ViewBag.Image = String.Format("data:image/png;base64,{0}", ImageBase64);
                 }
+                var person = new Person
+                {
+                    Guid = Guid.NewGuid(),
+                    Age = model.Age,
+                    BirthDate = model.BirthDate,
+                    Email = model.Email,
+                    Password = model.Password,
+                    ConfirmPassword = model.ConfirmPassword,
+                    Name = model.Name,
+                    Family = model.Family,
+                    UserName = model.UserName
+                };
+                _context.Person.Add(person);
+                _context.SaveChangesAsync();
+                
                 return View(model);
             }
             else

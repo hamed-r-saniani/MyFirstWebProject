@@ -1,42 +1,32 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Model_ViewModel.Models;
 using Model_ViewModel.Models.ViewModel;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Model_ViewModel.Controllers
 {
     public class SampleController : Controller
     {
+        private readonly IDatabaseContext _context;
+
+        public SampleController(IDatabaseContext context)
+        {
+            _context = context;
+        }
+
         public IActionResult Index(int? id)
         {
             List<Product> Products;
-            Product product = new Product();
             Category category = new Category();
-            var categories = category.GetCategory();
+            var categories = _context.Category.ToList();
 
-
+            Products = _context.Product.ToList();
 
             if (id != null)
             {
-                 Products = product.GetProduct().Where(p=>p.ProductCategoryID == id).ToList();
+                Products = Products.Where(p => p.ProductCategoryID == id).ToList();
             }
-            else
-            {
-                Products = product.GetProduct();
-            }
-
-
-
-
-
-
-
-
-
-
 
 
             SampleIndexViewModel ViewModel = new SampleIndexViewModel(Products, categories);
@@ -50,8 +40,8 @@ namespace Model_ViewModel.Controllers
             Category category = new Category();
 
 
-            var Categories = category.GetCategory();
-            var Products = product.GetProduct().Where(p => p.ProductID == id).First();
+            var Categories = _context.Category.ToList();
+            var Products = _context.Product.ToList().Where(p => p.ProductID == id).First();
 
 
             SampleDetailsViewModel ViewModel = new SampleDetailsViewModel(Products, Categories);
