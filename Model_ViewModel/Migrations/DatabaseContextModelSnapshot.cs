@@ -21,36 +21,35 @@ namespace Model_ViewModel.Migrations
 
             modelBuilder.Entity("Model_ViewModel.Models.Category", b =>
                 {
-                    b.Property<Guid>("Guid")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("CategoryID");
+                    b.Property<int>("CategoryID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CategoryName");
 
-                    b.HasKey("Guid");
+                    b.HasKey("CategoryID");
 
                     b.ToTable("Category");
                 });
 
             modelBuilder.Entity("Model_ViewModel.Models.Degree", b =>
                 {
-                    b.Property<Guid>("Guid")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("DegreeID");
+                    b.Property<int>("DegreeID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("DegreeName");
 
-                    b.HasKey("Guid");
+                    b.HasKey("DegreeID");
 
                     b.ToTable("Degree");
                 });
 
             modelBuilder.Entity("Model_ViewModel.Models.Person", b =>
                 {
-                    b.Property<Guid>("Guid")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("PersonID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("Age");
 
@@ -88,17 +87,18 @@ namespace Model_ViewModel.Migrations
                     b.Property<string>("Website")
                         .IsRequired();
 
-                    b.HasKey("Guid");
+                    b.HasKey("PersonID");
 
                     b.ToTable("Person");
                 });
 
             modelBuilder.Entity("Model_ViewModel.Models.Product", b =>
                 {
-                    b.Property<Guid>("Guid")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("ProductID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<Guid?>("CategoryGuid");
+                    b.Property<int?>("CategoryID");
 
                     b.Property<DateTime>("CreateDate");
 
@@ -106,13 +106,11 @@ namespace Model_ViewModel.Migrations
 
                     b.Property<DateTime?>("DeletedDate");
 
-                    b.Property<Guid?>("PersonGuid");
+                    b.Property<int>("PersonID");
 
                     b.Property<int>("ProductCategoryID");
 
                     b.Property<string>("ProductDesc");
-
-                    b.Property<int>("ProductID");
 
                     b.Property<string>("ProductImage");
 
@@ -122,11 +120,11 @@ namespace Model_ViewModel.Migrations
 
                     b.Property<string>("ProductShortDesc");
 
-                    b.HasKey("Guid");
+                    b.HasKey("ProductID");
 
-                    b.HasIndex("CategoryGuid");
+                    b.HasIndex("CategoryID");
 
-                    b.HasIndex("PersonGuid");
+                    b.HasIndex("PersonID");
 
                     b.ToTable("Product");
                 });
@@ -135,11 +133,12 @@ namespace Model_ViewModel.Migrations
                 {
                     b.HasOne("Model_ViewModel.Models.Category", "Category")
                         .WithMany("Product")
-                        .HasForeignKey("CategoryGuid");
+                        .HasForeignKey("CategoryID");
 
                     b.HasOne("Model_ViewModel.Models.Person", "Person")
                         .WithMany("Product")
-                        .HasForeignKey("PersonGuid");
+                        .HasForeignKey("PersonID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

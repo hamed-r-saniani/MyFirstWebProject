@@ -7,7 +7,6 @@ namespace Model_ViewModel.Models
     public class Category
     {
         [Key]
-        public Guid Guid { get; set; }
         public int CategoryID { get; set; }
         public string CategoryName { get; set; }
         public List<Product> Product { get; set; }

@@ -7,7 +7,6 @@ namespace Model_ViewModel.Models
     public class Product
     {
         [Key]
-        public Guid Guid { get; set; }
         public int ProductID { get; set; }
         public string ProductName { get; set; }
         public long ProductPrice { get; set; }
@@ -20,6 +19,7 @@ namespace Model_ViewModel.Models
         public int Deleted { get; set; }
         public Category Category { get; set; }
         public Person Person { get; set; }
+        public int PersonID { get; set; }
 
         public List<Product> GetProduct()
         {

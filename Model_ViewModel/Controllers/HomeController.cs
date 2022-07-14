@@ -24,7 +24,7 @@ namespace Model_ViewModel.Controllers
         public IActionResult Index()
         {
 
-            ViewBag.Degrees = new SelectList(_context.Degree.ToList(), "DegreeID", "DegreeName");
+            ViewBag.Degrees = new SelectList(degree.GetDegrees(), "DegreeID", "DegreeName");
 
             return View();
         }
@@ -46,7 +46,6 @@ namespace Model_ViewModel.Controllers
                 }
                 var person = new Person
                 {
-                    Guid = Guid.NewGuid(),
                     Age = model.Age,
                     BirthDate = model.BirthDate,
                     Email = model.Email,

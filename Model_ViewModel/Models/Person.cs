@@ -10,7 +10,7 @@ namespace Model_ViewModel.Models
     public class Person
     {
         [Key]
-        public Guid Guid { get; set; }
+        public int PersonID { get; set; }
 
 
         [Display(Name = "نام")]
