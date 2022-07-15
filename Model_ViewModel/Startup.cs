@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Model_ViewModel.Models;
+using Model_ViewModel.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -36,6 +37,9 @@ namespace Model_ViewModel
             });
             services.AddEntityFrameworkSqlServer().AddDbContext<DatabaseContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddTransient<IDatabaseContext, DatabaseContext>();
+            services.AddTransient<IAddNewProductService, AddNewProductService>();
+            services.AddTransient<IGetProductForAdminService, GetProductForAdminService>();
+            services.AddTransient<IGetProductDetailForAdminService, GetProductDetailForAdminService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

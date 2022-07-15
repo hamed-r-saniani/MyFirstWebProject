@@ -11,6 +11,8 @@ namespace Model_ViewModel.Models
         public DbSet<Degree> Degree { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<Person> Person { get; set; }
+        public DbSet<ProductFeatures> ProductFeatures { get; set; }
+        public DbSet<ProductImages> ProductImages { get; set; }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

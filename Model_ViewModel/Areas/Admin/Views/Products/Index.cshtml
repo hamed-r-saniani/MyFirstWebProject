@@ -1,5 +1,5 @@
 ﻿@addTagHelper *, LazZiya.TagHelpers
-@using SENTAK_STORE.Application.Services.Products.Queries.GetProductForAdmin;
+@using  Model_ViewModel.Services.GetProductForAdmin;
 @model  ProductForAdminDto;
 @{
     ViewData["Title"] = "Index";
@@ -24,10 +24,7 @@
                                                 <tr role="row">
                                                     <th class="sorting_asc">نام</th>
                                                     <th class="sorting_asc">دسته بندی</th>
-                                                    <th class="sorting_asc">برند </th>
                                                     <th class="sorting_asc">قیمت </th>
-                                                    <th class="sorting_asc">موجودی </th>
-                                                    <th class="sorting_asc">نمایش در سایت؟ </th>
                                                     <th class="sorting_asc"> </th>
                                                 </tr>
                                             </thead>
@@ -38,10 +35,7 @@
                                                     <tr role="row">
                                                         <td>@item.Name</td>
                                                         <td>@item.Category</td>
-                                                        <td>@item.Brand</td>
                                                         <td>@item.Price.ToString("n0")</td>
-                                                        <td>@item.Inventory</td>
-                                                        <td>@item.Displayed</td>
                                                         <td>
                                                             @*<a class="btn btn-danger">حذف</a>*@
                                                             <a href="~/admin/products/detail/@item.Id" class="btn btn-info">اطلاعات بیشتر</a>

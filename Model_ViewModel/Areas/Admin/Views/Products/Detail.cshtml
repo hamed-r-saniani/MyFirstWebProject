@@ -1,4 +1,4 @@
-﻿@using SENTAK_STORE.Application.Services.Products.Queries.GetProductDetailForAdmin
+﻿@using Model_ViewModel.Services.GetProductDetailForAdmin
 @model ProductDetailForAdmindto
 @{
     ViewData["Title"] = "Detail";
@@ -21,10 +21,6 @@
                                 <span class="primary text-bold-500"><a><i class="ft-home font-small-3"></i>  محصول</a></span>
                                 <span class="line-height-2 display-block overflow-hidden">@Model.Name</span>
                             </li>
-                            <li class="mb-2">
-                                <span class="primary text-bold-500"><a><i class="ft-briefcase font-small-3"></i> برند</a></span>
-                                <span class="line-height-2 display-block overflow-hidden"> @Model.Brand</span>
-                            </li>
                         </ul>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
@@ -40,16 +36,6 @@
                         </ul>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                        <ul class="no-list-style">
-                            <li class="mb-2">
-                                <span class="primary text-bold-500"><a><i class="ft-home font-small-3"></i>موجودی</a></span>
-                                <span class="line-height-2 display-block overflow-hidden">@Model.Inventory</span>
-                            </li>
-                            <li class="mb-2">
-                                <span class="primary text-bold-500"><a><i class="ft-home font-small-3"></i>نمایش در سایت؟</a></span>
-                                <span class="line-height-2 display-block overflow-hidden"> @Model.Displayed</span>
-                            </li>
-                        </ul>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                         <ul class="no-list-style">

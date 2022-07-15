@@ -10,6 +10,8 @@ namespace Model_ViewModel.Models
          DbSet<Degree> Degree { get; set; }
          DbSet<Product> Product { get; set; }
          DbSet<Person> Person { get; set; }
+         DbSet<ProductFeatures> ProductFeatures { get; set; }
+         DbSet<ProductImages> ProductImages { get; set; }
         int SaveChanges(bool acceptAllChangesOnSuccess);
         int SaveChanges();
         Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = new CancellationToken());

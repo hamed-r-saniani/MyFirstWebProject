@@ -20,6 +20,9 @@ namespace Model_ViewModel.Models
         public Category Category { get; set; }
         public Person Person { get; set; }
         public int PersonID { get; set; }
+        public long CategoryID { get; set; }
+        public virtual ICollection<ProductImages> ProductImages { get; set; }
+        public virtual ICollection<ProductFeatures> ProductFeatures { get; set; }
 
         public List<Product> GetProduct()
         {
