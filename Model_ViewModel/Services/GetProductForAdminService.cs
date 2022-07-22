@@ -13,10 +13,12 @@ namespace Model_ViewModel.Services
             _context = context;
         }
 
-        public ResultDto<ProductForAdminDto> Execute()
+        public ResultDto<ProductForAdminDto> Execute(int Page = 1, int PageSize = 20)
         {
+            int rowCount = 0;
             var products = _context.Product
                 .Include(p => p.Category)
+                .ToPaged(Page, PageSize, out rowCount)
                 .Select(p => new ProductsFormAdminList_Dto
                 {
                     Id = p.ProductID,
@@ -30,10 +32,13 @@ namespace Model_ViewModel.Services
             {
                 Data = new ProductForAdminDto()
                 {
-                    Products = products
+                    Products = products,
+                    CurrentPage = Page,
+                    PageSize = PageSize,
+                    RowCount = rowCount
                 },
                 IsSuccess = true,
-                Message = "",
+                Message = ""
             };
         }
     }

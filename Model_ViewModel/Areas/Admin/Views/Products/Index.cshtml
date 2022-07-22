@@ -1,6 +1,6 @@
 ﻿@addTagHelper *, LazZiya.TagHelpers
-@using  Model_ViewModel.Services.GetProductForAdmin;
-@model  ProductForAdminDto;
+@using Model_ViewModel.Services;
+@model Model_ViewModel.Models.Dto.ProductForAdminDto;
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Adminlayout.cshtml";
@@ -25,6 +25,7 @@
                                                     <th class="sorting_asc">نام</th>
                                                     <th class="sorting_asc">دسته بندی</th>
                                                     <th class="sorting_asc">قیمت </th>
+                                                    <th class="sorting_asc">توضیحات </th>
                                                     <th class="sorting_asc"> </th>
                                                 </tr>
                                             </thead>
@@ -36,6 +37,7 @@
                                                         <td>@item.Name</td>
                                                         <td>@item.Category</td>
                                                         <td>@item.Price.ToString("n0")</td>
+                                                        <td>@item.Description</td>                                                        
                                                         <td>
                                                             @*<a class="btn btn-danger">حذف</a>*@
                                                             <a href="~/admin/products/detail/@item.Id" class="btn btn-info">اطلاعات بیشتر</a>

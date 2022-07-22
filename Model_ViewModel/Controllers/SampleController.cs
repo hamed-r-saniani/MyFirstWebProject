@@ -18,10 +18,18 @@ namespace Model_ViewModel.Controllers
         public IActionResult Index(int? id)
         {
             List<Product> Products;
-            Category category = new Category();
             var categories = _context.Category.ToList();
 
-            Products = _context.Product.ToList();
+            Products = _context.Product.Where(x => x.Deleted == 0).Select(x=>new Product
+            {
+                ProductID = x.ProductID,
+                ProductName = x.ProductName,
+                ProductCategoryID = x.ProductCategoryID,
+                ProductPrice = x.ProductPrice,
+                ProductImage = x.ProductImage,
+                ProductDesc = x.ProductDesc,
+                ProductShortDesc = x.ProductShortDesc
+            }).ToList();
 
             if (id != null)
             {

@@ -25,9 +25,9 @@ namespace SENTAK_STORE.UI.Areas.Admin.Controllers
             _getProductDetailForAdminService = getProductDetailForAdminService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int Page = 1, int PageSize = 20)
         {
-            return View(_getProductForAdminService.Execute().Data);
+            return View(_getProductForAdminService.Execute(Page, PageSize).Data);
         }
 
         public IActionResult Detail(int Id)

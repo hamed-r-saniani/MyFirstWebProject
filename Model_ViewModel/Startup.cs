@@ -73,6 +73,8 @@ namespace Model_ViewModel
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Sample}/{action=Index}/{id?}");
+
+                //routes.MapAreaRoute(name: "Admin", areaName: "Admin", template: "{controller=Product}/{action=Index}/{id?}");
             });
         }
     }
