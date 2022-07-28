@@ -49,7 +49,7 @@ namespace Model_ViewModel.Controllers
 
 
             var Categories = _context.Category.ToList();
-            var Products = _context.Product.ToList().Where(p => p.ProductID == id).First();
+            var Products = _context.Product.ToList().Where(p => p.ProductID == id).FirstOrDefault();
 
 
             SampleDetailsViewModel ViewModel = new SampleDetailsViewModel(Products, Categories);
