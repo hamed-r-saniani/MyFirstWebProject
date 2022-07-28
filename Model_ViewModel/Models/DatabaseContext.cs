@@ -19,6 +19,15 @@ namespace Model_ViewModel.Models
             modelBuilder.Entity<Product>().Property(x => x.ProductID).ValueGeneratedOnAdd();
             modelBuilder.Entity<Person>().Property(x => x.PersonID).ValueGeneratedOnAdd();
             modelBuilder.Entity<Category>().Property(x => x.CategoryID).ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Category>().HasMany(x => x.Product).WithOne(y => y.Category).HasForeignKey(p => p.ProductCategoryID);
+            modelBuilder.Entity<Person>().HasMany(x => x.Product).WithOne(o => o.Person).HasForeignKey(p => p.PersonID);
+            modelBuilder.Entity<Product>().HasMany(x => x.ProductImages).WithOne(o => o.Product).HasForeignKey(p => p.ProductId);
+            modelBuilder.Entity<Product>().HasMany(x => x.ProductFeatures).WithOne(o => o.Product).HasForeignKey(p => p.ProductId);
+            modelBuilder.Entity<Product>().HasOne(x => x.Category).WithMany(p => p.Product).HasForeignKey(o => o.ProductID);
+            modelBuilder.Entity<Product>().HasOne(x => x.Person).WithMany(o => o.Product).HasForeignKey(p => p.ProductID);
+            modelBuilder.Entity<ProductFeatures>().HasOne(x => x.Product).WithMany(p => p.ProductFeatures);
+            modelBuilder.Entity<ProductImages>().HasOne(x => x.Product).WithMany(p => p.ProductImages);
         }
     }
 }
