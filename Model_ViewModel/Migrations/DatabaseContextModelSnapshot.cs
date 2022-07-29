@@ -98,7 +98,7 @@ namespace Model_ViewModel.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CategoryID");
+                    b.Property<long>("CategoryID");
 
                     b.Property<DateTime>("CreateDate");
 
@@ -122,22 +122,87 @@ namespace Model_ViewModel.Migrations
 
                     b.HasKey("ProductID");
 
-                    b.HasIndex("CategoryID");
-
-                    b.HasIndex("PersonID");
-
                     b.ToTable("Product");
+                });
+
+            modelBuilder.Entity("Model_ViewModel.Models.ProductFeatures", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Deleted");
+
+                    b.Property<DateTime?>("DeletedTime");
+
+                    b.Property<string>("DisplayName");
+
+                    b.Property<DateTime>("InsertTime");
+
+                    b.Property<int>("ProductId");
+
+                    b.Property<DateTime?>("UpdateTime");
+
+                    b.Property<string>("Value");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductFeatures");
+                });
+
+            modelBuilder.Entity("Model_ViewModel.Models.ProductImages", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Deleted");
+
+                    b.Property<DateTime?>("DeletedTime");
+
+                    b.Property<DateTime>("InsertTime");
+
+                    b.Property<int>("ProductId");
+
+                    b.Property<string>("Src");
+
+                    b.Property<DateTime?>("UpdateTime");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductImages");
                 });
 
             modelBuilder.Entity("Model_ViewModel.Models.Product", b =>
                 {
                     b.HasOne("Model_ViewModel.Models.Category", "Category")
                         .WithMany("Product")
-                        .HasForeignKey("CategoryID");
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Model_ViewModel.Models.Person", "Person")
                         .WithMany("Product")
-                        .HasForeignKey("PersonID")
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Model_ViewModel.Models.ProductFeatures", b =>
+                {
+                    b.HasOne("Model_ViewModel.Models.Product", "Product")
+                        .WithMany("ProductFeatures")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Model_ViewModel.Models.ProductImages", b =>
+                {
+                    b.HasOne("Model_ViewModel.Models.Product", "Product")
+                        .WithMany("ProductImages")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

@@ -37,7 +37,7 @@ namespace Model_ViewModel.Services
                     ProductPrice = request.Price,
                     ProductCategoryID = category.CategoryID,
                     Category = category,
-                    ProductImage = UploadFile(request.Images.FirstOrDefault()).FileNameAddress
+                    ProductImage = UploadFile(request.Images.FirstOrDefault()).FileNameAddress ?? ""
                 };
                 _context.Product.Add(product);
 
