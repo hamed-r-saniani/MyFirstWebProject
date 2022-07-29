@@ -28,18 +28,23 @@ namespace Model_ViewModel.Services
             {
 
                 var category = _context.Category.Find((int)request.CategoryId);
+                var lastProductId = _context.Product.Last().ProductID;
 
                 Product product = new Product()
                 {
+                    ProductID = ++lastProductId,
                     CreateDate = DateTime.Now,
                     ProductDesc = request.Description,
                     ProductName = request.Name,
                     ProductPrice = request.Price,
                     ProductCategoryID = category.CategoryID,
+                    CategoryID = category.CategoryID,
                     Category = category,
-                    ProductImage = UploadFile(request.Images.FirstOrDefault()).FileNameAddress ?? ""
+                    PersonID = 1,
+                    Person = new Person() { PersonID = 1},
+                    ProductImage = UploadFile(request.Images.FirstOrDefault())?.FileNameAddress ?? ""
                 };
-                _context.Product.Add(product);
+                
 
                 List<ProductImages> productImages = new List<ProductImages>();
                 foreach (var item in request.Images)
@@ -50,9 +55,7 @@ namespace Model_ViewModel.Services
                         Product = product,
                         Src = uploadedResult.FileNameAddress,
                     });
-                }
-
-                _context.ProductImages.AddRange(productImages);
+                }            
 
 
                 List<ProductFeatures> productFeatures = new List<ProductFeatures>();
@@ -65,6 +68,10 @@ namespace Model_ViewModel.Services
                         Product = product,
                     });
                 }
+
+                
+                _context.Product.Add(product);
+                _context.ProductImages.AddRange(productImages);
                 _context.ProductFeatures.AddRange(productFeatures);
 
                 _context.SaveChanges();

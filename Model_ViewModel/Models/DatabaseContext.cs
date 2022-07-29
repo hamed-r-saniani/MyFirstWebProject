@@ -16,8 +16,8 @@ namespace Model_ViewModel.Models
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Product>().Property(x => x.ProductID).ValueGeneratedOnAdd();
-            modelBuilder.Entity<Person>().Property(x => x.PersonID).ValueGeneratedOnAdd();
+            //modelBuilder.Entity<Product>().Property(x => x.ProductID).ValueGeneratedOnAdd();
+            //modelBuilder.Entity<Person>().Property(x => x.PersonID).ValueGeneratedOnAdd();
             modelBuilder.Entity<Category>().Property(x => x.CategoryID).ValueGeneratedOnAdd();
 
             modelBuilder.Entity<Category>().HasMany(x => x.Product).WithOne(y => y.Category).HasForeignKey(p => p.ProductCategoryID);

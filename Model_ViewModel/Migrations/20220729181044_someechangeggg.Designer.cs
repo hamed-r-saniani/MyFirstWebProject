@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Model_ViewModel.Models;
 
 namespace Model_ViewModel.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20220729181044_someechangeggg")]
+    partial class someechangeggg
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -120,6 +122,8 @@ namespace Model_ViewModel.Migrations
 
                     b.HasKey("ProductID");
 
+                    b.HasIndex("CategoryID");
+
                     b.ToTable("Product");
                 });
 
@@ -179,7 +183,7 @@ namespace Model_ViewModel.Migrations
                 {
                     b.HasOne("Model_ViewModel.Models.Category", "Category")
                         .WithMany("Product")
-                        .HasForeignKey("ProductID")
+                        .HasForeignKey("CategoryID")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Model_ViewModel.Models.Person", "Person")

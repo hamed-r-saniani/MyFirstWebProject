@@ -36,10 +36,10 @@ namespace Model_ViewModel
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
             services.AddEntityFrameworkSqlServer().AddDbContext<DatabaseContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddTransient<IDatabaseContext, DatabaseContext>();
-            services.AddTransient<IAddNewProductService, AddNewProductService>();
-            services.AddTransient<IGetProductForAdminService, GetProductForAdminService>();
-            services.AddTransient<IGetProductDetailForAdminService, GetProductDetailForAdminService>();
+            services.AddScoped<IDatabaseContext, DatabaseContext>();
+            services.AddScoped<IAddNewProductService, AddNewProductService>();
+            services.AddScoped<IGetProductForAdminService, GetProductForAdminService>();
+            services.AddScoped<IGetProductDetailForAdminService, GetProductDetailForAdminService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
