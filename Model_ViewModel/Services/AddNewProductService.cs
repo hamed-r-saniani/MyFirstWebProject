@@ -41,7 +41,7 @@ namespace Model_ViewModel.Services
                     CategoryID = category.CategoryID,
                     Category = category,
                     PersonID = 1,
-                    Person = new Person() { PersonID = 1},
+                    Person = new Person() { PersonID = 1,UserName="ali",Password="123",ConfirmPassword="123"},
                     ProductImage = UploadFile(request.Images.FirstOrDefault())?.FileNameAddress ?? ""
                 };
                 
